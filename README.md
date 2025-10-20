@@ -32,7 +32,9 @@ pip install opencv-python numpy
 
 2. Run the script:
 
+```
 python FruitQualityInspection.py
+```
 
 3. For each fruit, the program will show a segmented image and print the quality diagnosis in the terminal.
 
