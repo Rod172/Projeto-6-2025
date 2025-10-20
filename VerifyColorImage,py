@@ -1,0 +1,14 @@
+import cv2
+
+img = cv2.imread('banana/sweet-5008011_1280.jpg')
+hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+def show_HSV(event, x, y, flags, param):
+    if event == cv2.EVENT_LBUTTONDOWN:
+        pixel = hsv[y, x]
+        print(f'HSV at ({x},{y}): {pixel}')  # Saída: [H S V]
+
+cv2.imshow('banana', img)
+cv2.setMouseCallback('banana', show_HSV)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
