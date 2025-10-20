@@ -9,12 +9,12 @@ All logic is easy to adapt for new fruit types or more advanced inspection metho
 
  - Python 3.x
 
- - Libraries: opencv-python, numpy
+ - Libraries: opencv-python, numpy, colorama
 
 Install dependencies using:
 
 ```bash
-pip install opencv-python numpy
+pip install opencv-python numpy colorama
 ```
 # Usage Instructions
 
@@ -39,6 +39,24 @@ python FruitQualityInspection.py
 ```
 
 3. For each fruit, the program will show a segmented image and print the quality diagnosis in the terminal.
+
+#Interface & Visualization
+
+ - The segmented images (with the correct mask) are displayed on screen using an OpenCV window.
+
+ - After each image, press any key to continue to the next one.
+
+ - If you do not see the windows, ensure you are running outside Jupyter/Colab and using a graphical environment (on Linux WSL, configure an X server as needed).
+
+#Customization and Troubleshooting
+
+ - Adjust the defect tolerance threshold by changing the variable criterio_banana in the code.
+
+ - You can modify the HSV color range intervals in the functions to adapt for new fruits, different lighting, or backgrounds.
+
+ - The “Defect Mask” window shows in white the pixels identified as defective—use this to debug detection accuracy.
+
+ - All results are also printed in the terminal.
 
 #Notes
 
