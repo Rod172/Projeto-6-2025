@@ -13,8 +13,9 @@ All logic is easy to adapt for new fruit types or more advanced inspection metho
 
 Install dependencies using:
 
+```bash
 pip install opencv-python numpy
-
+```
 # Usage Instructions
 
 1. Save your fruit images in the same folder as the script, with the following names:
