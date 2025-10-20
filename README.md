@@ -40,7 +40,7 @@ python FruitQualityInspection.py
 
 3. For each fruit, the program will show a segmented image and print the quality diagnosis in the terminal.
 
-#Interface & Visualization
+# Interface & Visualization
 
  - The segmented images (with the correct mask) are displayed on screen using an OpenCV window.
 
@@ -48,7 +48,7 @@ python FruitQualityInspection.py
 
  - If you do not see the windows, ensure you are running outside Jupyter/Colab and using a graphical environment (on Linux WSL, configure an X server as needed).
 
-#Customization and Troubleshooting
+# Customization and Troubleshooting
 
  - Adjust the defect tolerance threshold by changing the variable criterio_banana in the code.
 
@@ -58,7 +58,7 @@ python FruitQualityInspection.py
 
  - All results are also printed in the terminal.
 
-#Notes
+# Notes
 
  - Best results are obtained with well-lit, high-quality photos and a clean, contrastive background.
 
