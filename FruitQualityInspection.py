@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import os
 
 def segment_fruit(img, fruit_type):
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -42,16 +43,19 @@ def analyze_quality(segmented, mask, fruit_type):
 def main():
     frutas = ['banana', 'maca', 'laranja', 'tomate', 'morango']
     for fruta in frutas:
-        print(f"--- {fruta.upper()} ---")
-        img = cv2.imread(f'{fruta}.jpg')
-        if img is None:
-            print('Imagem não encontrada.')
-            continue
-        fruit_segment, mask = segment_fruit(img, fruta)
-        resultado = analyze_quality(fruit_segment, mask, fruta)
-        print(resultado)
-        cv2.imshow(f'Segmentação {fruta}', fruit_segment)
-        cv2.waitKey(500)
+        folder = fruta  # pasta com o nome da fruta
+        for img_name in os.listdir(folder):
+            if img_name.endswith('.jpg'):
+                img_path = os.path.join(folder, img_name)
+                img = cv2.imread(img_path)
+                if img is None:
+                    print(f'Imagem não encontrada: {img_path}')
+                    continue
+                fruit_segment, mask = segment_fruit(img, fruta)
+                resultado = analyze_quality(fruit_segment, mask, fruta)
+                print(f"{fruta.capitalize()} - {img_name}: {resultado}")
+                cv2.imshow(f'{fruta} - {img_name}', fruit_segment)
+                cv2.waitKey(200)  # tempo de exibição da imagem, pode ajustar
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':

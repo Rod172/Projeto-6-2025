@@ -18,17 +18,19 @@ pip install opencv-python numpy
 ```
 # Usage Instructions
 
-1. Save your fruit images in the same folder as the script, with the following names:
+1. Place your fruit images inside the corresponding folders:
 
- - banana.jpg
+ - **banana/**
 
- - maca.jpg
+ - **maca/**
 
- - laranja.jpg
+ - **laranja/**
 
- - tomate.jpg
+ - **tomate/**
 
- - morango.jpg
+ - **morango/**
+
+You can use any filename and any supported image format (e.g., .jpg, .png).
 
 2. Run the script:
 
