@@ -84,13 +84,13 @@ def analyze_quality(segmented, mask, fruit_type):
 
     # Classificação e mensagem
     if percent_defective < criterio and not not_ripe_msg:
-        msg = (Fore.GREEN + f"{fruit_type.capitalize()} is good ({percent_defective:.2f}% defects)")
+        msg = (Fore.GREEN + f"{fruit_type.capitalize()} está bom ({percent_defective:.2f}% defeitos)")
         classification = "Boa"
     elif not_ripe_msg:
-        msg = (Fore.YELLOW + f"{fruit_type.capitalize()} is not ripe ({percent_green:.2f}% green)" + not_ripe_msg)
+        msg = (Fore.YELLOW + f"{fruit_type.capitalize()} Não está maduro ({percent_green:.2f}% verde)" + not_ripe_msg)
         classification = "Verde"
     else:
-        msg = (Fore.RED + f"{fruit_type.capitalize()} is bad ({percent_defective:.2f}% defects)")
+        msg = (Fore.RED + f"{fruit_type.capitalize()} está ruim ({percent_defective:.2f}% defeitos)")
         classification = "Ruim"
 
     return msg, percent_defective, classification  # ✅ retorna classificação
