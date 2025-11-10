@@ -170,10 +170,10 @@ class FruitQualityGUI(QWidget):
         }
         for btn, color in btn_colors.items():
             try:
+                # stylesheet sem propriedade 'filter' (compatível com Qt)
                 btn.setStyleSheet(
                     f"QPushButton{{background-color: {color}; color: white; border: none; padding:6px 10px; border-radius:6px;}}"
                     f"QPushButton:disabled{{background-color: #bdc3c7; color: #7f8c8d;}}"
-                    f"QPushButton:hover{{filter: brightness(1.08);}}"
                 )
             except Exception:
                 pass
@@ -222,7 +222,16 @@ class FruitQualityGUI(QWidget):
         pg_layout.addWidget(self.spin_page_size)
         pv_layout.addLayout(pg_layout)
 
-        # tabela
+        # --- Conexões e estado inicial da paginação ---
+        self.btn_prev_pg.clicked.connect(self.preview_prev_page)
+        self.btn_next_pg.clicked.connect(self.preview_next_page)
+        self.spin_page_size.valueChanged.connect(self.set_preview_page_size)
+        # inicializa atributos de paginação antes do primeiro update
+        self.preview_page = 0
+        self.preview_page_size = self.spin_page_size.value()
+        # (não chamar update ainda — a tabela será criada abaixo)
+        
+         # tabela
         self.preview_table = QTableWidget()
         self.preview_table.setColumnCount(4)
         self.preview_table.setHorizontalHeaderLabels(["Fruta", "Arquivo", "Defeitos (%)", "Classificação"])
@@ -246,6 +255,8 @@ class FruitQualityGUI(QWidget):
         header.setSectionResizeMode(3, QHeaderView.ResizeToContents)
 
         pv_layout.addWidget(self.preview_table)
+        # agora que a tabela existe, atualiza a visualização inicial
+        self.update_results_preview()
         content_splitter.addWidget(preview_container)
         content_splitter.setStretchFactor(0, 3)
         content_splitter.setStretchFactor(1, 1)
